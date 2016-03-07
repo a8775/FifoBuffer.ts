@@ -1,0 +1,27 @@
+{
+  "name": "fifobuffer.ts",
+  "version": "1.0.0",
+  "description": "FifoBuffer.ts",
+  "main": "FifoBuffer.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a8775/FifoBuffer.ts.git"
+  },
+  "keywords": [
+    "fifo",
+    "TypeScript"
+  ],
+  "author": "a8775",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a8775/FifoBuffer.ts/issues"
+  },
+  "homepage": "https://github.com/a8775/FifoBuffer.ts#readme",
+  "devDependencies": {
+    "chai": "3.x",
+    "mocha": "2.x"
+  }
+}
