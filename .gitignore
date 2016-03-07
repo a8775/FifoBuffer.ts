@@ -1,11 +1,11 @@
 node_modules/
 typings/
-BitSet.js
-BitSet.d.ts
-BitSet.js.map
-test/BitSet.test.js
-test/BitSet.test.d.ts
-test/BitSet.test.js.map
+FifoBuffer.js
+FifoBuffer.d.ts
+FifoBuffer.js.map
+test/FifoBuffer.test.js
+test/FifoBuffer.test.d.ts
+test/FifoBuffer.test.js.map
 test.ts
 test.js
 test.js.map
