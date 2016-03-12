@@ -149,5 +149,26 @@ describe('FifoBuffer.ts tests...', function() {
         });
     });
 
+    describe('Test peek(0,0) data', function() {
+        let b: FifoBuffer = new FifoBuffer();
+        let b2 = b.peek(0,0);
+        it('should be of type object', function () {
+          expect(typeof b2).to.be.equal("object");  
+        });
+        it('length should be 0', function() {
+            expect(b2.byteLength).to.be.equal(0);
+        });
+    });
+
+    describe('Test popfront(0) data', function() {
+        let b: FifoBuffer = new FifoBuffer();
+        let b2 = b.popfront(0);
+        it('should be of type object', function () {
+          expect(typeof b2).to.be.equal("object");  
+        });
+        it('length should be 0', function() {
+            expect(b2.byteLength).to.be.equal(0);
+        });
+    });
 });
 

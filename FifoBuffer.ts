@@ -51,6 +51,15 @@ export class FifoBuffer {
     private bufferHighIndex: number;
 
     /**
+     * Critical value for the bufferHighIndex that will thow FifoBufferException if reached.
+     * Default bufferCriticalIndex value 100000 
+     * 
+     * @private
+     * @type {number}
+     */
+    private bufferCriticalIndex: number;
+
+    /**
      * Creates an instance of FifoBuffer.
      * 
      * @constructor
@@ -59,6 +68,7 @@ export class FifoBuffer {
         this.buffer = new Uint8Array(1024);
         this.bufferLowIndex = 0;
         this.bufferHighIndex = 0;
+        this.bufferCriticalIndex = 100000;
     }
 
     /**
@@ -71,6 +81,21 @@ export class FifoBuffer {
             throw new FifoBufferException("Index out of range: index has to be greater than 0!");
         if ((this.bufferLowIndex + n) > this.bufferHighIndex)
             throw new FifoBufferException("Index out of range: index has to be lower than length!");
+    }
+
+    private assertOVERFLOW(): void {
+        if (this.bufferHighIndex > this.buffer.byteLength)
+            throw new FifoBufferException("FifoBuffer overflow error!");
+    }
+
+    /**
+     * Check if critical bufferHighIndex value has been reached.
+     * 
+     * @private
+     */
+    private assertCRITICAL(): void {
+        if (this.bufferHighIndex > this.bufferCriticalIndex)
+            throw new FifoBufferException("Critical size of FifoBuffer has been reached!");
     }
 
     /**
@@ -92,6 +117,9 @@ export class FifoBuffer {
             this.buffer.set(data, this.bufferHighIndex);
             this.bufferHighIndex = this.bufferHighIndex + data.byteLength;
         }
+
+        this.assertCRITICAL();
+        this.assertOVERFLOW();
     }
 
     /**
